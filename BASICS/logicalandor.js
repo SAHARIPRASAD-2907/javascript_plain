@@ -14,3 +14,4 @@ if (isGuestOneVegan && isGuestTwoVegan) {
 } else {
  console.log('Offer up anything on the menu.')
 }
+
