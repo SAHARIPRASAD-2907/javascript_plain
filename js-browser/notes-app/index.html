@@ -10,15 +10,34 @@
     <h1>Notes-app</h1>
     <h3>Take notes and never forget</h3>
     <p>This is created by S A HARIPRASAD</p>
-    <p>some note text</p>
+    <h4><u>Your notes are</u></h4>
+    <div id="render-notes"></div>
   </body>
 </html>
 <script>
-  console.log("Notes app");
-  //Dom - Document object model
-  const ps = document.querySelectorAll("p");
-  console.log(ps);
-  ps.forEach((p) => {
-    console.log(p.textContent);
+  const notes = [
+    {
+      title: "My next trip",
+      body: "I would like to go to Spain",
+    },
+    {
+      title: "Habbits to work on",
+      body: "Exercise. Eating a bit better.",
+    },
+    {
+      title: "Office modification",
+      body: "Get a new seat",
+    },
+  ];
+  //Add new Element
+  notes.map((a) => {
+    const newParagraph = document.createElement("p");
+    newParagraph.textContent = `
+    Title:${a.body} 
+    Body:${a.title}
+    `;
+    document.getElementById("render-notes").appendChild(newParagraph);
+    console.log(a.body);
+    console.log(a.title);
   });
 </script>
