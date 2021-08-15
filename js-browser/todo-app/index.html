@@ -9,7 +9,7 @@
   <body>
     <h1>Todo-app</h1>
     <div id="render-todo"></div>
-    <button>Add Todo</button>
+    <button id="add-todo">Add Todo</button>
   </body>
 </html>
 <script>
@@ -46,7 +46,7 @@
   });
 
   //Add Note button
-  const addTodo = document.querySelector("button");
+  const addTodo = document.querySelector("#add-todo");
   addTodo.addEventListener("click", (e) => {
     console.log("The button was clicked");
   });

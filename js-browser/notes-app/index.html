@@ -12,7 +12,8 @@
     <p>This is created by S A HARIPRASAD</p>
     <h4><u>Your notes are</u></h4>
     <div id="render-notes"></div>
-    <button>Create Note</button>
+    <button id="create-note">Create Note</button>
+    <button id="remove-note">Remove All Notes</button>
   </body>
 </html>
 <script>
@@ -41,8 +42,13 @@
     console.log(a.body);
     console.log(a.title);
   });
-  document.querySelector("button").addEventListener("click", (e) => {
+  //Create NOTE
+  document.querySelector("#create-note").addEventListener("click", (e) => {
     e.target.textContent = "The button was clicked";
     console.log("Did this work");
+  });
+  //Remove NOTE
+  document.querySelector("#remove-note").addEventListener("click", (e) => {
+    console.log("Notes removed");
   });
 </script>
