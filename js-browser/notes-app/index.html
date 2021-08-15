@@ -12,6 +12,7 @@
     <p>This is created by S A HARIPRASAD</p>
     <h4><u>Your notes are</u></h4>
     <div id="render-notes"></div>
+    <button>Create Note</button>
   </body>
 </html>
 <script>
@@ -29,7 +30,7 @@
       body: "Get a new seat",
     },
   ];
-  //Add new Element
+  //Add notes to DOM
   notes.map((a) => {
     const newParagraph = document.createElement("p");
     newParagraph.textContent = `
@@ -39,5 +40,9 @@
     document.getElementById("render-notes").appendChild(newParagraph);
     console.log(a.body);
     console.log(a.title);
+  });
+  document.querySelector("button").addEventListener("click", (e) => {
+    e.target.textContent = "The button was clicked";
+    console.log("Did this work");
   });
 </script>
