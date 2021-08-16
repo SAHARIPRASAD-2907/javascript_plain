@@ -8,8 +8,9 @@
   </head>
   <body>
     <h1>Todo-app</h1>
-    <div id="render-todo"></div>
+    <input type="text" id="todo-text" placeholder="enter todo" />
     <button id="add-todo">Add Todo</button>
+    <div id="render-todo"></div>
   </body>
 </html>
 <script>
@@ -38,7 +39,7 @@
   totalNotes.textContent = `There are a total to ${incompletTodo.length} todos left`;
   todo.appendChild(totalNotes);
 
-  //Rendering Incomplete Todos
+  //Rendering filter Todos
   todos.map((todos) => {
     const note = document.createElement("p");
     note.textContent = todos.text;
@@ -49,5 +50,10 @@
   const addTodo = document.querySelector("#add-todo");
   addTodo.addEventListener("click", (e) => {
     console.log("The button was clicked");
+  });
+
+  //Add new TODO
+  document.querySelector("#todo-text").addEventListener("input", (e) => {
+    console.log(e.target.value);
   });
 </script>
