@@ -4,3 +4,5 @@ git remote add origin https://github.com/SAHARIPRASAD-2907/javascript_plain.git
 git push -u origin main
 
 code . to open directory in CLI
+
+cntrl+~ to open terminal
