@@ -1,59 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Notes-app</title>
-  </head>
-  <body>
-    <h1>Notes-app</h1>
-    <h3>Take notes and never forget</h3>
-    <p>This is created by S A HARIPRASAD</p>
-    <h4><u>Your notes are</u></h4>
-    <input type="text" id="input-text" placeholder="filter-notes" />
-    <button id="create-note">Create Note</button>
-    <button id="remove-note">Remove All Notes</button>
-    <div id="render-notes"></div>
-  </body>
+
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <h1>Notes App</h1>
+        <h2>Take notes and never forget</h2>
+        <input id="search-text" type="text" placeholder="Filter notes">
+        <select id="filter-by">
+            <option value="byEdited">Sort by last edited</option>
+            <option value="byCreated">Sort by recently created</option>
+            <option value="alphabetical">Sort alphabetically</option>
+        </select>
+        <div id="notes"></div>
+        <button id="create-note">Create Note</button>      
+        <script src="notes-app.js"></script>
+    </body>
 </html>
-<script>
-  const notes = [
-    {
-      title: "My next trip",
-      body: "I would like to go to Spain",
-    },
-    {
-      title: "Habbits to work on",
-      body: "Exercise. Eating a bit better.",
-    },
-    {
-      title: "Office modification",
-      body: "Get a new seat",
-    },
-  ];
-  //Add notes to DOM
-  notes.map((a) => {
-    const newParagraph = document.createElement("p");
-    newParagraph.textContent = `
-    Title:${a.body} 
-    Body:${a.title}
-    `;
-    document.getElementById("render-notes").appendChild(newParagraph);
-    console.log(a.body);
-    console.log(a.title);
-  });
-  //Create NOTE
-  document.querySelector("#create-note").addEventListener("click", (e) => {
-    e.target.textContent = "The button was clicked";
-    console.log("Did this work");
-  });
-  //Remove NOTE
-  document.querySelector("#remove-note").addEventListener("click", (e) => {
-    console.log("Notes removed");
-  });
-  //INPUT TEXT
-  document.querySelector("#input-text").addEventListener("input", (e) => {
-    console.log(e.target.value);
-  });
-</script>

@@ -1,59 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>todo-app</title>
-  </head>
-  <body>
-    <h1>Todo-app</h1>
-    <input type="text" id="todo-text" placeholder="enter todo" />
-    <button id="add-todo">Add Todo</button>
-    <div id="render-todo"></div>
-  </body>
+
+<html>
+    <head></head>
+    <body>
+        <h1>Todos</h1>
+        <input id="search-text" type="text" placeholder="Filter todos">
+        <label>
+            <input type="checkbox" id="hide-completed"> Hide completed
+        </label>
+        <div id="todos"></div>
+        <form id="new-todo">
+            <input type="text" placeholder="Something to do" name="text">
+            <button>Add Todo</button>
+        </form>
+        <script src="todo-app.js"></script>
+    </body>
 </html>
-<script>
-  const todos = [
-    {
-      text: "Buy food",
-      completed: true,
-    },
-    {
-      text: "Do work",
-      completed: false,
-    },
-    {
-      text: "Exercise",
-      completed: true,
-    },
-  ];
-  //Finding incomplete TODOs left
-  const incompletTodo = todos.filter((todo) => {
-    return !todo.completed;
-  });
-
-  //Rendering incomplete Todos
-  const todo = document.getElementById("render-todo");
-  const totalNotes = document.createElement("h3");
-  totalNotes.textContent = `There are a total to ${incompletTodo.length} todos left`;
-  todo.appendChild(totalNotes);
-
-  //Rendering filter Todos
-  todos.map((todos) => {
-    const note = document.createElement("p");
-    note.textContent = todos.text;
-    todo.appendChild(note);
-  });
-
-  //Add Note button
-  const addTodo = document.querySelector("#add-todo");
-  addTodo.addEventListener("click", (e) => {
-    console.log("The button was clicked");
-  });
-
-  //Add new TODO
-  document.querySelector("#todo-text").addEventListener("input", (e) => {
-    console.log(e.target.value);
-  });
-</script>
