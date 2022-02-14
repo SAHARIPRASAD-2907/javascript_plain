@@ -3,8 +3,7 @@ const gussesEl = document.querySelector("#guesses");
 const game1 = new Hangman("Cat", 2);
 
 puzzleEl.textContent = game1.getPuzzle();
-gussesEl.textContent = game1.remainingGuesses;
-console.log(game1.status);
+gussesEl.textContent = game1.getStatueMessage();
 
 const game2 = new Hangman("New Jersey", 4);
 
@@ -12,6 +11,5 @@ window.addEventListener("keypress", function (e) {
   const guess = e.key;
   game1.makeGuess(guess);
   puzzleEl.textContent = game1.getPuzzle();
-  gussesEl.textContent = game1.remainingGuesses;
-  console.log(game1.status);
+  gussesEl.textContent = game1.getStatueMessage();
 });
