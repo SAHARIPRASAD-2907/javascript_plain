@@ -1,51 +1,40 @@
 console.log("Notes app");
-let notes = [];
+let notes = getSavedNotes();
 
 const filters = {
   searchText: "",
 };
 
 // check for existing saved data
-const notesJSON = localStorage.getItem("notes");
-if (notesJSON !== null) {
-  notes = JSON.parse(notesJSON);
-}
-
-const renderNotes = function (notes, filters) {
-  const filteredNotes = notes.filter(function (note) {
-    return note.title.toLowerCase().includes(filters.searchText.toLowerCase());
-  });
-
-  document.querySelector("#notes").innerHTML = "";
-
-  filteredNotes.forEach(function (note) {
-    const noteEl = document.createElement("p");
-    if (note.title.length > 0) {
-      noteEl.textContent = note.title;
-    } else {
-      noteEl.textContent = "Unnamed note";
-    }
-
-    document.querySelector("#notes").appendChild(noteEl);
-  });
-};
 
 renderNotes(notes, filters);
 
+// creating note
 document.querySelector("#create-note").addEventListener("click", function (e) {
+  const id = uuidv4();
   notes.push({
+    id: id,
     title: "",
     body: "",
   });
-  localStorage.setItem("notes", JSON.stringify(notes));
-  renderNotes(notes, filters);
+  saveNotes(notes);
+  location.assign(`edit.html#${id}`);
 });
 
+// searching note by text
 document.querySelector("#search-text").addEventListener("input", function (e) {
   filters.searchText = e.target.value;
   renderNotes(notes, filters);
 });
 
+// filtering on change
 document.querySelector("#filter-by").addEventListener("change", function (e) {
   console.log(e.target.value);
+});
+
+window.addEventListener("storage", function (e) {
+  if (e.key === "notes") {
+    notes = JSON.parse(e.newValue);
+    renderNotes(notes, filters);
+  }
 });
