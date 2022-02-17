@@ -3,6 +3,7 @@ let notes = getSavedNotes();
 
 const filters = {
   searchText: "",
+  sortBy: "byEdited",
 };
 
 // check for existing saved data
@@ -12,10 +13,13 @@ renderNotes(notes, filters);
 // creating note
 document.querySelector("#create-note").addEventListener("click", function (e) {
   const id = uuidv4();
+  const timestamp = moment().valueOf();
   notes.push({
     id: id,
     title: "",
     body: "",
+    createdAt: timestamp,
+    updatedAt: timestamp,
   });
   saveNotes(notes);
   location.assign(`edit.html#${id}`);
@@ -29,7 +33,8 @@ document.querySelector("#search-text").addEventListener("input", function (e) {
 
 // filtering on change
 document.querySelector("#filter-by").addEventListener("change", function (e) {
-  console.log(e.target.value);
+  filters.sortBy = e.target.value;
+  renderNotes(notes, filters);
 });
 
 window.addEventListener("storage", function (e) {
@@ -38,3 +43,45 @@ window.addEventListener("storage", function (e) {
     renderNotes(notes, filters);
   }
 });
+
+// const now = moment();
+// //now.minute(1)
+// now.add(1, "week").subtract(20, "days");
+// console.log(now.format("MMM Do, YYYY"));
+// console.log(now.fromNow());
+// const nowTimestamp = now.valueOf();
+
+// console.log(moment(nowTimestamp).toString());
+
+// const birthday = moment();
+// birthday.year(2000).month(6).date(29);
+// console.log(birthday.format("MMM D, YYYY"));
+
+// November
+
+// const now = new Date()
+
+// Unix Epoch --- January 1st 1970 00:00:00
+// 1000
+// const now = new Date();
+// const timestamp = now.timestamp();
+
+// const myDate = new Date(timestamp);
+// console.log(myDate.getFullYear());
+
+// console.log(now);
+
+// console.log(`Year: ${now.getFullYear()}`);
+// console.log(`Year: ${now.getMonth()}`);
+// console.log(`Year: ${now.getDate()}`);
+
+// const dateOne = new Date("March 1 2028 12:00:00");
+// const dateTwo = new Date();
+// const dateOneTimestamp = dateOne.getTime();
+// const dateTwoTimestamp = dateTwo.getTime();
+
+// if (dateOneTimestamp < dateTwoTimestamp) {
+//   console.log(dateOne.toString());
+// } else if (dateOneTimestamp > dateTwoTimestamp) {
+//   console.log(dateTwo.toString());
+// }
