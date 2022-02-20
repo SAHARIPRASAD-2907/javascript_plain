@@ -14,12 +14,13 @@ window.addEventListener("keypress", function (e) {
   gussesEl.textContent = game1.statueMessage;
 });
 
-getPuzzle((error, puzzle) => {
-  if (error) {
-    console.log("Error:${error}");
-  } else {
+getPuzzle("2").then(
+  (puzzle) => {
     console.log(puzzle);
+  },
+  (err) => {
+    console.log(`Error ${err}`);
   }
-});
+);
 
 // Making an HTTP request
