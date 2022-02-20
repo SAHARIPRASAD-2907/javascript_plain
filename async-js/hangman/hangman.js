@@ -33,7 +33,6 @@ class Hangman {
   }
   get puzzle() {
     let puzzle = "";
-    console.log(this.word);
     this.word.forEach((letter) => {
       if (this.guessedLetters.includes(letter) || letter === "") {
         puzzle = puzzle + letter;

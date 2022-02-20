@@ -1,26 +1,34 @@
 const puzzleEl = document.querySelector("#puzzle");
 const gussesEl = document.querySelector("#guesses");
-const game1 = new Hangman("Cat", 2);
-
-puzzleEl.textContent = game1.puzzle;
-gussesEl.textContent = game1.statueMessage;
-
-const game2 = new Hangman("New Jersey", 4);
+let game1;
 
 window.addEventListener("keypress", function (e) {
   const guess = e.key;
   game1.makeGuess(guess);
-  puzzleEl.textContent = game1.puzzle;
-  gussesEl.textContent = game1.statueMessage;
+  render();
 });
 
-getPuzzle("2").then(
-  (puzzle) => {
-    console.log(puzzle);
-  },
-  (err) => {
-    console.log(`Error ${err}`);
-  }
-);
+const startGame = async () => {
+  const puzzle = await getPuzzle("2");
+  game1 = new Hangman(puzzle, 5);
+  render();
+};
 
-// Making an HTTP request
+const render = () => {
+  puzzleEl.textContent = game1.puzzle;
+  gussesEl.textContent = game1.statueMessage;
+};
+
+document.querySelector("#reset").addEventListener("click", startGame);
+
+startGame();
+
+// getPuzzle("2")
+//   .then((puzzle) => {
+//     console.log(puzzle);
+//   })
+//   .catch((err) => {
+//     console.log(`Error: ${err}`);
+//   });
+
+// fetch API
