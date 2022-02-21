@@ -6,3 +6,5 @@ class Hangman {
     return "Testing";
   }
 }
+
+console.log("This is working well");
