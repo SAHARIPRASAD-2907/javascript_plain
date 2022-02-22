@@ -1,0 +1,1 @@
+(()=>{"use strict";console.log("utilities 2"),console.log(33),console.log(10*10)})();
