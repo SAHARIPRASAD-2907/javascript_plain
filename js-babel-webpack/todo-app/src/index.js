@@ -1,35 +1,36 @@
-import { v4 as uuidv4 } from "uuid";
-import { renderTodos, saveTodos, getSavedTodos } from "./todo-function";
-let todos = getSavedTodos();
+import { renderTodos } from "./views";
+import { setFilters } from "./filters";
+import { createTodo, loadTodos } from "./todos";
 
-const filters = {
-  searchText: "",
-  hideCompleted: false,
-};
-
-renderTodos(todos, filters);
+renderTodos();
 
 document.querySelector("#search-text").addEventListener("input", (e) => {
-  filters.searchText = e.target.value;
-  renderTodos(todos, filters);
+  setFilters({
+    searchText: e.target.value,
+  });
+  renderTodos();
 });
 
 document.querySelector("#new-todo").addEventListener("submit", (e) => {
   const text = e.target.elements.text.value.trim();
+  e.preventDefault();
   if (text.length > 0) {
-    e.preventDefault();
-    todos.push({
-      id: uuidv4(),
-      text,
-      completed: false,
-    });
-    saveTodos(todos);
-    renderTodos(todos, filters);
+    createTodo(text);
+    renderTodos();
     e.target.elements.text.value = "";
   }
 });
 
 document.querySelector("#hide-completed").addEventListener("change", (e) => {
-  filters.hideCompleted = e.target.checked;
-  renderTodos(todos, filters);
+  setFilters({
+    hideCompleted: e.target.checked,
+  });
+  renderTodos();
+});
+
+window.addEventListener("storage", (e) => {
+  if (e.key === "todos") {
+    loadTodos();
+    renderTodos();
+  }
 });
