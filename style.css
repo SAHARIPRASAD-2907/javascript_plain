@@ -1,0 +1,237 @@
+@charset "UTF-8";
+* {
+  trasition: 0.2s;
+  box-sizing: border-box;
+}
+
+html,
+body,
+main {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  background: #222;
+  scroll-behavior: smooth;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px;
+  position: fixed;
+  width: 100%;
+  background: rgba(34, 34, 34, 0.97);
+  z-index: 10;
+}
+nav .container {
+  width: 1200px;
+  margin: 0 auto;
+  text-align: right;
+  padding: 0 5x;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+nav .container .links a,
+nav .container .logo a {
+  padding: 10px;
+  margin: 5px 5px;
+  color: #27999d;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: 0.3s;
+}
+nav .container .links a:hover,
+nav .container .logo a:hover {
+  border-bottom: 1px solid #cfd2ca;
+  color: #cfd2ca;
+}
+
+section.hero {
+  padding: 30px 0 0;
+  min-height: 100vh;
+  background: #222;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-width: 1200px;
+  margin: 0 auto 0;
+}
+section.hero article {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  flex: 1;
+  width: 100%;
+  margin: 0 auto;
+}
+section.hero article div {
+  width: 100%;
+}
+section.hero div {
+  padding: 20px;
+  background: url("https://images.unsplash.com/photo-1518640467707-6811f4a6ab73?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5e13608bf6071802b8df2c54c5205213&auto=format&fit=crop&w=1400&q=80")
+    fixed center no-repeat;
+  color: #27999d;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+section.hero div:last-of-type {
+  text-align: right;
+}
+section.hero .big-text {
+  margin: 0;
+  font-size: 6rem;
+  line-height: 6rem;
+  font-weight: 600;
+}
+section.hero .small-text {
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 300;
+  transition: 2s;
+}
+section.hero .small-text:hover {
+  opacity: 1;
+  color: #64b2b1;
+}
+
+section {
+  background: lightgray;
+  width: 100%;
+  padding: 50px 20px;
+}
+section .orange-title {
+  color: white;
+  background: #f26429;
+}
+section .blue-title {
+  color: white;
+  background: #52c1de;
+}
+section .yellow-title {
+  color: #222;
+  background: #fdde35;
+}
+section h2 {
+  color: #056f7d;
+  font-size: 1.75rem;
+  font-weight: 300;
+  width: 100%;
+  padding: 10px 20px;
+}
+section img {
+  max-width: 100%;
+  transition: 0.3s;
+}
+
+#projects {
+  display: flex;
+  flex-direction: column;
+}
+#projects .container {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  justify-content: center;
+  align-items: left;
+  margin: 0 auto;
+}
+#projects .container a.lonely-link {
+  margin: 0 auto;
+  color: #eee;
+  text-align: center;
+  background: #222;
+  width: 250px;
+  padding: 15px 10px;
+  text-decoration: none;
+}
+#projects .container a.lonely-link::after {
+  content: " »";
+}
+#projects article {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+.project-tile {
+  max-width: 280px;
+  display: flex;
+  flex-direction: column;
+  transition: 0.3s;
+  background: #222;
+  margin: 5px 5px;
+}
+.project-tile:hover img {
+  opacity: 0.5;
+}
+.project-tile .card-info {
+  padding: 0px 20px;
+  color: #eee;
+}
+
+#links {
+  background: #222;
+  color: #eee;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+#links a {
+  text-decoration: none;
+  padding: 10px 20px;
+  background: #eee;
+  color: #222;
+  border-radius: 3px;
+  opacity: 0.9;
+  transition: 0.3s;
+  margin: 5px;
+}
+#links a:hover {
+  opacity: 1;
+}
+
+@media (max-width: 1220px) {
+  .project-tile {
+    max-width: 400px;
+  }
+}
+@media (max-width: 860px) {
+  .project-tile {
+    max-width: 600px;
+  }
+}
+@media (max-width: 600px) {
+  .hero article h1 {
+    font-size: 4rem;
+    line-height: 4rem;
+  }
+
+  #links {
+    flex-direction: column;
+  }
+  #links a {
+    min-width: 250px;
+  }
+}
+@media (max-width: 400px) {
+  .hero article h1 {
+    font-size: 3rem;
+    line-height: 3rem;
+  }
+}
